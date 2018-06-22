@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jumpingBall</title>
+	<style type="text/css">
+		/*body{margin: 0;}*/
+		button{width: 50px;height: 30px;margin: 20px 0 0 20px;}
+		.bg{width: 1300px;height: 600px;background: #000;position: relative;top: 0px;left: 0px;}
+		#ball{width: 50px;height: 50px;background: #ee0;position: relative;top: 0px;left: 10px;border-radius: 50%;}
+	</style>
+</head>
+<body>
+	<div class="bg">
+		<div id="ball"></div>
+	</div>
+	<button type="button" onclick="downBall()">开始</button>
+	<button type="button" onclick="reset()">重置</button>
+	<script src="ball.js"></script>
+</body>
+</html>

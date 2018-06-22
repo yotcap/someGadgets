@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<style type="text/css">
+			body{margin:0;}
+			#aa{width:1200px;height:600px;border:1px solid #000;background:#000;}
+			.pp{width:8px;height:8px;background:#fff;position:absolute;}
+		</style>
+		<script src="jquery.js"></script>
+	</head>
+	<body>
+		<div id="aa">
+			<div id="pp" class="pp"></div>
+			<div id="pp1" class="pp"></div>
+			<div id="pp2" class="pp"></div>
+			<div id="pp3" class="pp"></div>
+			<div id="pp4" class="pp"></div>
+			<div id="pp5" class="pp"></div>
+			<div id="pp6" class="pp"></div>
+			<div id="pp7" class="pp"></div>
+		</div>
+		<div id="bb"></div>
+		<script>	
+			var $xx = 0;	//鼠标 x 坐标
+			var $yy = 0;	//鼠标 y 坐标
+			var arrRand = [];	//随机数数组
+			var randTop = 80;	//随机数上限
+			var randDown = 50;	//随机数下线
+			var arrRand2 = [];
+			var randTop2 = 50;
+			var randDown2 = 20;
+			
+			var moveTime = 10;	//移动时间
+			var arrRandTime = [];	//随机时间	运动时间
+			var randTimeTop = 350;	//时间上限
+			var randTimeDown = 250;	//时间下限
+			var interval = null;
+			
+			Array.prototype.sum = function(){
+				return this.reduce(function(partial, value){
+					return partial + value;
+				});
+			};
+			//元素开始运动
+			goInterval();
+			$('#aa').mousemove(function (e) {
+				$xx = e.originalEvent.x || e.originalEvent.layerX || 0;
+				$yy = e.originalEvent.y || e.originalEvent.layerY || 0;
+				$("#bb").text($xx + "..." + $yy);
+				clearInterval(interval);
+				$("*").stop(true, true);
+				goInterval();
+				$("#pp").animate({left:($xx-20)+"px", top:($yy-20)+"px"}, moveTime);
+				$("#pp1").animate({left:($xx+20)+"px", top:($yy-20)+"px"}, moveTime);
+				$("#pp2").animate({left:($xx-20)+"px", top:($yy+20)+"px"}, moveTime);
+				$("#pp3").animate({left:($xx+20)+"px", top:($yy+20)+"px"}, moveTime);
+			});
+			
+			function goInterval(){
+				interval = setInterval(function(){
+					for(var i=0;i < 16;i++){arrRand[i] = parseInt(Math.random() * (randTop - randDown + 1) + randDown);};
+					for(var z=0;z < 16;z++){arrRand2[z] = parseInt(Math.random() * (randTop2 - randDown2 + 1) + randDown2);};
+					for(var j=0;j < 9;j++){arrRandTime[j] = parseInt(Math.random() * (randTimeTop - randTimeDown + 1) + randTimeDown);};
+					$("#pp").animate({left:($xx-arrRand[0])+"px", top:($yy-arrRand[1])+"px"}, arrRandTime[0]);
+					$("#pp1").animate({left:($xx+arrRand[2])+"px", top:($yy-arrRand[3])+"px"}, arrRandTime[1]);
+					$("#pp2").animate({left:($xx-arrRand[4])+"px", top:($yy+arrRand[5])+"px"}, arrRandTime[2]);
+					$("#pp3").animate({left:($xx+arrRand[6])+"px", top:($yy+arrRand[7])+"px"}, arrRandTime[3]);
+					
+					$("#pp").animate({left:($xx-arrRand2[8])+"px", top:($yy-arrRand2[9])+"px"}, arrRandTime[4]);
+					$("#pp1").animate({left:($xx+arrRand2[10])+"px", top:($yy-arrRand2[11])+"px"}, arrRandTime[5]);
+					$("#pp2").animate({left:($xx-arrRand2[12])+"px", top:($yy+arrRand2[13])+"px"}, arrRandTime[6]);
+					$("#pp3").animate({left:($xx+arrRand2[14])+"px", top:($yy+arrRand2[15])+"px"}, arrRandTime[7]);
+				}, 400);
+			}
+		</script>
+	</body>
+</html>
