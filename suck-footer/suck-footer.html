@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" >
+  <title>suck-footer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <style>
+    * {
+      margin: 0;
+    }
+    html, body {
+      height: 100%;
+    }
+    .wrapper {
+      height: 100%;
+    }
+    .content {
+      min-height: 100%;
+      background: orange;
+    }
+    .foo {
+      height: 150px;
+      background: black;
+    }
+  </style>
+  <script>
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="content" id="content">
+      <ul>
+        <script>
+          let cc = 5;     // 用来改变 content 高度
+          for (let i = 0; i < cc; i++) {
+            document.write('<li>' + i + '</li>');
+          }
+        </script>
+      </ul>
+    </div>
+    <div class="foo" id="foo"></div>
+  </div>
+  <script>
+    let wrapper = document.getElementById('content');
+    let winHeight = window.innerHeight;
+    let foo = document.getElementById('foo');
+    let fooH = Number(window.getComputedStyle(foo).height.replace(/[^0-9]/ig, ""));
+    wrapper.style.minHeight = (winHeight - fooH) + 'px';
+  </script>
+</body>
+</html>
