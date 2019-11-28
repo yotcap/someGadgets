@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<style>
+  .left { width: 200px; min-height: 100px; float: left; background: orange; }
+  .right { width: 200px; min-height: 100px; float: left; background: red; }
+  .center { width: 100%; min-height: 200px; float: left; background: grey; }
+  /* 圣杯布局 */
+  .b1 {
+    min-width: 800px;
+    padding: 0 200px;   /* 防center文字遮挡 */
+  }
+  .c1 {
+    position: relative;
+  }
+  .l1 {
+    margin-left: -100%;   /* 与center保持一行 */
+    position: relative;
+    left: -200px;
+  }
+  .r1 {
+    margin-left: -200px;    /* 与center保持一行 */
+    position: relative;
+    right: -200px;
+  }
+  /* 双飞翼布局 */
+  .b2 {
+    min-width: 800px;
+    margin-top: 50px;
+  }
+  .c2-boxer {
+    width: 100%;
+    float: left;
+  }
+  .c2 {
+    min-height: 200px;
+    margin: 0 200px;      /* 防center文字遮挡 */
+    background: grey;
+  }
+  .l2 {
+    margin-left: -100%;
+  }
+  .r2 {
+    margin-left: -200px;
+  }
+  /* flex */
+  .b3 {
+    height: 100px;
+    margin-top: 50px;
+    display: flex;
+  }
+  .c3 {
+    min-height: 200px;
+    flex-grow: 1;
+    background: grey;
+  }
+  .l3 {
+    flex-basis: 200px;
+    order: -1;    /* 排序在center之前 */
+    background: orange;
+  }
+  .r3 {
+    flex-basis: 200px;
+    background: red;
+  }
+</style>
+</head>
+<body>
+  <!-- 圣杯布局 -->
+  <div class="b1">
+    <div class="center c1">center</div>
+    <div class="left l1">left</div>
+    <div class="right r1">right</div>
+  </div>
+  <div style="clear: both;"></div>
+  <!-- 双飞翼布局 -->
+  <div class="b2">
+    <div class="c2-boxer">
+      <div class="c2">center</div>
+    </div>
+    <div class="left l2">left</div>
+    <div class="right r2">right</div>
+  </div>
+  <div style="clear: both;"></div>
+  <!-- flex -->
+  <div class="b3">
+    <div class="c3">center</div>
+    <div class="l3">left</div>
+    <div class="r3">right</div>
+  </div>
+</body>
+</html>
